@@ -3,9 +3,30 @@
 
 {% block meta %}
 <title>Hello, world!</title>
+<link rel="stylesheet" href="{% static 'css/tutorial.css' %}">
 {% endblock meta %}
 
 {% block content %}
-  <h1>Hello, world!</h1>
-  <h3>This is example app for Django template</h3>
+  <div id="header">
+    <h1>Hello, world!</h1>
+    <h3>This is example app for Django template</h3>
+  </div>
+
+  <div id="main">
+    <div class="content_section">
+        <p class="date">published: 28 September 2022</p>
+        <h2><a href="">Tutorial CSS ku</a></h2>
+        <p id="content_1">Yay ini tutorial yang gampang!</p>
+    </div>
+    <div class="content_section">
+        <p class="date ">published: 29 September 2022</p>
+        <h2><a href="">Tutorial CSS mu</a></h2>
+        <p id="content_2">Yay ini tutorial yang mudah!</p>
+    </div>
+    <div class="content_section">
+        <p>published: 30 September 2022</p>
+        <h2><a href="">Tutorial CSS semua</a></h2>
+        <p id="content_3">Yay ini tutorial yang tidak sulit!</p>
+    </div>
+  </div>
 {% endblock content %}
