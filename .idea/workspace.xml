@@ -4,10 +4,8 @@
     <list default="true" id="47d015da-217c-4797-b004-d394a63a8f49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/example_app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_django/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_django/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_django/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_django/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wishlist/templates/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/wishlist/templates/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wishlist/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/wishlist/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wishlist/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/wishlist/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -56,5 +54,17 @@
       <updated>1663185074401</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

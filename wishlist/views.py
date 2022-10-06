@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from wishlist.models import BarangWishlist
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views import View
 
 # Create your views here.
 @login_required(login_url='/wishlist/login/')
@@ -22,6 +23,31 @@ def show_wishlist(request):
         'last_login': request.COOKIES['last_login'],
     }
     return render(request, "wishlist.html", context)
+
+@login_required(login_url='/wishlist/login/')
+def show_wishlist_ajax(request):
+
+    data_barang_wishlist = BarangWishlist.objects.all()
+    context = {
+        'list_barang': None,
+        'nama': 'Ajra kun',
+        'last_login': request.COOKIES['last_login'],
+    }
+
+    # if request.is_ajax():
+    #     data = data_barang_wishlist
+    #     data_serializer = serializers.serialize('json', data)
+    #     return JsonResponse(data_serializer, safe=False)
+    return render(request, "wishlist_ajax.html", context)
+
+class GetData(View):
+    
+    def get(self, request, *args, **kwargs):
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            barang = BarangWishlist.objects.all()
+            barang_serializers = serializers.serialize('json', barang)
+            return JsonResponse(barang_serializers, safe=False)
+        return JsonResponse({'message' : 'Wrong Validation'})
 
 def xml_data(request):
     data = BarangWishlist.objects.all()

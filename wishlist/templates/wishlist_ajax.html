@@ -1,0 +1,100 @@
+
+{% load static %}
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--    <script>-->
+<!--$("btn").click(function(){-->
+<!--fetch(URL, {-->
+<!--    headers:{-->
+<!--        'Accept': 'application/json',-->
+<!--        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()-->
+<!--    },-->
+<!--})-->
+<!--.then(response => {-->
+<!--    alert("hello world!");-->
+<!--    return response.json() //Convert response to JSON-->
+<!--})-->
+<!--.then(data => {-->
+<!--    //Perform actions with the response data from the view-->
+<!--})-->
+<!--}-->
+<!--</script>-->
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Wishlist</title>
+<!--<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"-->
+<!--      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">-->
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">{{nama}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="d-grid gap-2 d-md-block">
+  <button class="button2"><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+      </div>
+  </div>
+</nav>
+
+
+
+
+<table class="table table-striped">
+    <tr>
+        <th><h3>Nama Barang</h3></th>
+        <th><h3>Harga Barang</h3></th>
+        <th><h3>Deskripsi</h3></th>
+    </tr>
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for barang in list_barang %}
+    <tr>
+        <th>{{barang.nama_barang}}</th>
+        <th>{{barang.harga_barang}}</th>
+        <th>{{barang.deskripsi}}</th>
+    </tr>
+    {% endfor %}
+</table>
+<div class="col-12 text-center">
+                    
+    <div class="content-data mt-4" data-url="{% url 'wishlist:get_data' %}">Data di sini</div>
+    <button class="btn btn-primary btn-get-data">Get JSON data from Django</button>
+</div>
+</div>
+</div>
+<div class="last_login">
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+</div>
+</div>
+
+
+{% block scripts %}
+<script>
+    $('.btn-get-data').on('click', function(){
+        $.ajax({
+            url: $('.content-data').data('url'),
+            type: 'GET',
+            datatype: 'json',
+            success: function(resp){
+                var html = '';
+                $(resp).each(function(index, value) {
+                html += "<tr><td>" + value.nama_barang + "</td><td>" + value.harga_barang + "</td><td>" + value.deskripsi + "</td><td>"
+                })
+                $(".table-striped").append(html)
+            },
+            error: function(resp){
+                console.log('something went wrong');
+            },
+        });
+    });
+</script>
+{% endblock scripts %}
+</body>
